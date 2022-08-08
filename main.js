@@ -38,7 +38,7 @@ function startws(){
                 if (prz.val.startsWith("I:112")) {
                     auth(document.querySelector("#username").value, document.querySelector("#password").value);
                 } else {
-                    if (prz.val.startsWith("I:011")) {
+                    if (prz.val.startsWith("I:011") | prz.val.startsWith("E:103")) {
                         if (document.querySelector("#password").value == "") {
                             alert("You haven't typed a password.");
                         } else {
@@ -59,15 +59,11 @@ function auth(user,pass){
         ws.send('{"cmd": "direct", "val": {"cmd": "version_chk", "val": "scratch-beta-5-r7"}}');
         ws.send(`{"cmd": "direct", "val": {"cmd": "authpswd", "val": {"username": "${user}", "pswd": "${pass}"}}}`);
 
-        setInterval(function(){ws.send('{"cmd":"ping","val":""}')},15000);
+        setInterval(function(){if(ws.readyState==1){ws.send('{"cmd":"ping","val":""}')}},15000);
 }
 
 function post(content){
         ws.send(`{"cmd":"direct","val":{"cmd":"post_home","val":"${content}"}}`);
-}
-
-function setting(b){
-        ws.send('{"cmd":"direct","val":{"cmd":"update_config","val":{"theme":"orange","mode":false,"sfx":true,"bgm":true,"bgm_song":17,"layout":"new","pfp_data":101,"quote":""}}}');
 }
 
 //code lifted from turbo_networking.js
