@@ -5,9 +5,7 @@ function h(){
 }
 
 function startws(){
-    function coding(obj) {
-        return Function(document.querySelector("#code").value)();
-    }
+    function coding(obj){return Function(document.querySelector("#code").value)()}
     coding();
 
     ws = new WebSocket("wss:\/\/server.meower.org");
@@ -37,12 +35,17 @@ function startws(){
         }
 
         if (prz.cmd == "statuscode") {
-                if (prz.val == "I:112 | Trusted Access enabled") {
+                if (prz.val.startsWith("I:112")) {
                     auth(document.querySelector("#username").value, document.querySelector("#password").value);
                 } else {
-                    if (prz.val != "I:011 | Invalid Password") {
-                        alert("You have typed an invalid password (or left the field blank).");
+                    if (prz.val.startsWith("I:011")) {
+                        if (document.querySelector("#password").value == "") {
+                            alert("You haven't typed a password.");
+                        } else {
+                            alert("You have typed an invalid password.");
+                        }
                         ws.close();
+                        document.querySelector("#ulist").innerText = "Logged out of Meower!";
                     }
                 }
         }
@@ -56,7 +59,7 @@ function auth(user,pass){
         ws.send('{"cmd": "direct", "val": {"cmd": "version_chk", "val": "scratch-beta-5-r7"}}');
         ws.send(`{"cmd": "direct", "val": {"cmd": "authpswd", "val": {"username": "${user}", "pswd": "${pass}"}}}`);
 
-        setInterval(function(){ws.send('{"cmd":"ping","val":""}')}, 15000)
+        setInterval(function(){ws.send('{"cmd":"ping","val":""}')},15000);
 }
 
 function post(content){
@@ -100,7 +103,7 @@ checkstatus();
 
 document.querySelector("#code").value = `// Example Meower chatbot code
 
-function handlePost(bundle) {
+window.handlePost = function(bundle) {
     if (bundle[0] == "Discord") {
         bundle = bundle[1].split(": ")
     }
