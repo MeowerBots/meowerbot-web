@@ -1,0 +1,22 @@
+body, button, textarea {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #fff;
+    background: #000;
+    text-align: center;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    color: #000;
+    background: #ddd;
+}
+
+textarea {
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    width: 40em;
+    height: 20em;
+}
