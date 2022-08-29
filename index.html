@@ -10,7 +10,7 @@
     <body>
         <header>
             <h1>Meower Bot Web IDE</h1>
-            <h2>Look in the JS console for detailed information</h2>
+            <h2>Look in the JavaScript console for detailed info</h2>
         </header>
 
         <main>
@@ -18,7 +18,7 @@
                 <button onclick='startws();'>Start bot</button>
                 <button onclick='ws.close();document.querySelector("#ulist").innerText = "Logged out of Meower!"'>Stop bot</button>
                 <button onclick='h()'>Check connection status</button>
-                <p>Username: <input type="text" id="username" /></p>
+                <p class="case-warn-1">Username: <input type="text" class="username" /><br><span class="case-warn-2">(this is case-sensitive!)</span></p>
                 <p>Password: <input type="password" id="password" /></p>
                 <small>Don't worry, this information doesn't leave your browser or Meower's servers</small>
             </div>
@@ -27,6 +27,15 @@
             <br><br><input type="text" id="post" /> <button onclick='post(document.querySelector("#post").value)'>Manually post</button>
             <p id="ulist">Not logged into Meower</p>
         </main>
+
+        <footer>
+            <small>
+                Meowerbot Web 1.1.0 by Voxalice<br>
+                If you're making a very advanced bot, I would recommend these libraries instead:<br>
+                <a href="https://github.com/MeowerBots/MeowerBot.py">MeowerBot.py</a> (the original!)<br>
+                <a href="https://github.com/MeowerBots/Meowerbot-Scratch">Meowerbot-Scratch</a>
+            </small>
+        </footer>
 
         <script src="main.js"></script>
     </body>

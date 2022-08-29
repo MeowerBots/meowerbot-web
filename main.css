@@ -1,3 +1,4 @@
+/* Basic styling */
 body, button, textarea {
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     color: #fff;
@@ -19,4 +20,61 @@ textarea {
     padding: 5px;
     width: 40em;
     height: 20em;
+}
+
+/* Case-sensitive username warning */
+/*
+.case-warn-2 {
+    background: #333;
+    color: #f55;
+    position: absolute;
+    font-size: small;
+    width: 150px;
+    top: 23%;
+    left: 54%;
+    margin-left: -75px; /* Use half of the width (120/2 = 60), to center the tooltip * /
+}*/
+
+.case-warn-2 {
+    color: #ddd;
+    font-size: small;
+}
+
+.case-warn-1 .case-warn-2 {
+    display: none;
+}
+
+.case-warn-1:hover .case-warn-2 {
+    display: block;
+    transition: 0.5s;
+}
+
+.case-warn-1 .case-warn-2::after {
+    /* W3Schools */
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+}
+
+/* Footer styling */
+footer {
+    position: absolute;
+    left: 0px;
+    background: #222;
+    width: 100vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+a {
+    color: #87cefa;
+}
+
+a:hover {
+    color: #add8e6;
 }
